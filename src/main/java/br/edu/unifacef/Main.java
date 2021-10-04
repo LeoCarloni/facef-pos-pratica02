@@ -174,6 +174,45 @@ public class Main {
 		Integer zerarEstoque = zerar.zerarEstoque(351L);
 		System.out.println("O estoque do produto foi zerado!\n");
 		// -----------------------------------------------------------------------------------------------------------
+                //Venda
+                //Cadastro de vendas
+                System.out.println("------ Venda  ------");
+                System.out.println("Cadastrar Venda! ");
+                Venda novaVenda = new Venda();
+                novaVenda.setIdVendedor(351L);
+                novaVenda.setIdCliente(587L);
+                novaVenda.setValorBruto(100.00);
+                novaVenda.setValorFinal(90.00);
+                VendaBusiness vendaBusiness = new VendaBusiness(new VendaDAO());
+                Venda vendaSalvo = vendaBusiness.salvarVenda(novaVenda);
+                System.out.println("Venda Cadastrada: " + vendaSalvo + "\n");
+
+                //Excluir venda
+                System.out.println("Excluir venda!");
+                VendaBusiness excluirVendas = new VendaBusiness(new VendaDAO());
+                Long excluirVenda = excluirVendas.excluirVenda(888L);
+                System.out.println("Venda Excluida \n");
+
+                //Definir valor com desconto
+                System.out.println("Definir Desconto!");
+                VendaBusiness calcularDescontos = new VendaBusiness(new VendaDAO());
+                Double calcularDesconto = calcularDescontos.definirDesconto(100.00, 10.00);
+                System.out.println("Valor com desconto: "+ calcularDesconto + "\n");
+
+                //Pesquisar Venda
+                System.out.println("Pesquisar responsavel pela venda!");
+                VendaBusiness pesquisarVendas = new VendaBusiness(new VendaDAO());
+                Long vendedor = pesquisarVendas.pesquisarVendedor(888l);
+                System.out.println("O código do vendedor responsavel pela venda foi: " + vendedor + "\n");
+
+                //Obter valor sem desconto
+                System.out.println("Pesquisar valor sem desconto!");
+                VendaBusiness pesquisarValores = new VendaBusiness(new VendaDAO());
+                Double valorBruto = pesquisarValores.pesquisarValor(888l);
+                System.out.println("O valor sem desconto da compra foi: " + valorBruto + "\n");
+
+                // -----------------------------------------------------------------------------------------------------------
+
 		System.out.println("--- FIM ---");
 
 	}
